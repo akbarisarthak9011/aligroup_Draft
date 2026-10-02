@@ -4,7 +4,8 @@ import {
   Download, BookOpen, Flame, Snowflake, Waves, 
   Zap, Info, Menu, X, MessageCircle, Send, Bot,
   User, Plus, List, Clock, CheckCircle, Camera, Loader2, Sparkles,
-  LayoutDashboard, Package, Calendar, ShieldCheck, AlertTriangle
+  LayoutDashboard, Package, Calendar, ShieldCheck, AlertTriangle,
+  Smartphone, FileSpreadsheet, MapPin // <-- Added these three
 } from 'lucide-react';
 
 // Ali Group Corporate Color
@@ -293,6 +294,124 @@ const TroubleshootingSection = ({ searchQuery }) => {
 };
 
 const Footer = () => {
+  const FeaturesSection = () => {
+  const PLATFORM_FEATURES = [
+    {
+      title: "Service Scheduling",
+      description: "Dispatch notifications immediately update technicians of work changes, while scheduling/calendar integrations automatically update Outlook and/or Google calendar.",
+      icon: Calendar
+    },
+    {
+      title: "Work Order Tracking",
+      description: "Optimize your techs efficiency and productivity with powerful, easy-to-use work order tools like smart lists, bulk work actions, and recurring jobs.",
+      icon: CheckCircle
+    },
+    {
+      title: "Customer Portal",
+      description: "Customizable portal gives your customers or in-house technicians the ability to quickly issue work requests and receive status notifications, reducing room for error with “status check” communications.",
+      icon: Smartphone
+    },
+    {
+      title: "Asset / Equipment Tracking",
+      description: "Easily track the equipment/assets needing service in your facilities with the ability to include photos, user manuals, warranty information, serial numbers and more.",
+      icon: Wrench
+    },
+    {
+      title: "Service Dashboards",
+      description: "Quickly see at a glance work that is behind schedule, completed, and assigned during a given timeframe, job costing and profitability, and more with customizable dashboards and reports.",
+      icon: LayoutDashboard
+    },
+    {
+      title: "Billing & Contract Management",
+      description: "Accelerate your cash flow by easily and quickly creating billing summaries, tracking job costs, and exporting work orders.",
+      icon: FileSpreadsheet
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Complete Service Management</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Everything you need to manage field technicians, track assets, and streamline your operations from end to end.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {PLATFORM_FEATURES.map((feature, idx) => {
+            const Icon = feature.icon;
+            return (
+              <div key={idx} className="flex flex-col items-center text-center group">
+                <div className="mb-6 p-4 rounded-full bg-blue-50 text-[#3478B4] group-hover:bg-[#3478B4] group-hover:text-white transition-colors duration-300">
+                  <Icon size={32} />
+                </div>
+                <h3 className="text-xl font-semibold text-[#4A4B68] mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-500 leading-relaxed mb-6">
+                  {feature.description}
+                </p>
+                <button className="mt-auto border border-[#3478B4] text-[#3478B4] hover:bg-[#3478B4] hover:text-white font-medium px-6 py-2 rounded transition-colors">
+                  Learn More
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Mobile Field App Highlight feature */}
+        <div className="mt-24 bg-slate-50 rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="p-10 lg:p-16">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Mobile Field App for Technicians</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Empower your field workforce with a dedicated mobile application. Technicians can view assignments, review customer service locations, check access notes (e.g., door codes), and log work seamlessly from the field.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center text-sm font-medium text-gray-700">
+                  <CheckCircle size={16} className="text-[#3478B4] mr-3" /> View assigned technicians and schedules
+                </li>
+                <li className="flex items-center text-sm font-medium text-gray-700">
+                  <MapPin size={16} className="text-[#3478B4] mr-3" /> Interactive maps for service locations
+                </li>
+                <li className="flex items-center text-sm font-medium text-gray-700">
+                  <FileText size={16} className="text-[#3478B4] mr-3" /> Attachments, item logs, and overview tabs
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gray-200 h-full min-h-[400px] flex items-center justify-center p-8 relative">
+                {/* Mockup of the mobile app shown in Image 4 */}
+                <div className="bg-white w-[280px] h-[550px] rounded-[2.5rem] border-[8px] border-gray-800 shadow-2xl overflow-hidden flex flex-col relative">
+                  <div className="bg-[#3478B4] text-white p-4 pt-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-sm font-medium">#3543 : Install new equipment</span>
+                    </div>
+                    <p className="text-xs opacity-80 mb-2">Sample Customer</p>
+                    <span className="text-xs font-bold bg-blue-400 px-2 py-1 rounded">ASSIGNED</span>
+                  </div>
+                  <div className="flex text-xs font-medium border-b border-gray-200 bg-gray-100">
+                    <div className="flex-1 py-2 text-center bg-white border-t-2 border-[#3478B4]">Overview</div>
+                    <div className="flex-1 py-2 text-center text-gray-500">Items</div>
+                    <div className="flex-1 py-2 text-center text-gray-500">Attachments</div>
+                  </div>
+                  <div className="p-4 flex-1">
+                    <h4 className="text-[#3478B4] font-semibold text-sm mb-2">Assigned To</h4>
+                    <p className="text-sm text-gray-800">Ted Technician</p>
+                    <p className="text-xs text-gray-500 mb-4">Dec 21, 8am-2pm</p>
+                    <h4 className="text-[#3478B4] font-semibold text-sm mb-2">Service Location</h4>
+                    <p className="text-sm text-gray-800">Main Location</p>
+                    <p className="text-xs text-gray-500">201 East Pikes Peak Avenue<br/>Colorado Springs, CO 80903</p>
+                    <p className="text-xs text-gray-500 mt-1">Notes: Door code: 12345</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
   return (
     <footer id="contact" className="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -544,11 +663,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-gray-800 flex flex-col">
       <Header onOpenPortal={() => setShowPortal(true)} />
+      
       <main className="flex-grow">
         <HeroSection searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <ManualsSection />
         <TroubleshootingSection searchQuery={searchQuery} />
+        <FeaturesSection /> 
       </main>
+
       <Footer />
       <ChatWidget />
       {showPortal && <ClientPortal onClose={() => setShowPortal(false)} />}
